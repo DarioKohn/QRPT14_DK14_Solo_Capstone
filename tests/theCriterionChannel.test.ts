@@ -152,14 +152,14 @@ describe("Testing main features of The Criterion Channel website", () => {
         await page.click(page.needHelpLnk);
         await page.navigate("https://www.criterionchannel.com/help/articles/trouble-logging-in-computer");
         await page.driver.findElement(page.needSignInHelpWholePage).isDisplayed();
-        await page.driver.sleep(6000);
+        await page.driver.sleep(4000);
         await fs.writeFile(`${__dirname}/help_sign_in_page.png`,
             await page.driver.takeScreenshot(), "base64",
             (e) => {
                 if (e) console.error(e)
                 else console.log('Save Succesful')
             });
-        await page.navigate("https://www.criterionchannel.com");
+        await page.click(page.homePageLnk);
     });
 
     test("Testing account drop down menu, account settings => name, email, password", async () => {
@@ -316,20 +316,23 @@ describe("Testing main features of The Criterion Channel website", () => {
         await page.click(page.manageSubscriptionBtn);
         await page.driver.sleep(300);
         await page.driver.findElement(page.manageSubscriptionWholeForm).isDisplayed();
-        await page.click(page.manageAvailablePlansBtn);
-        await page.driver.sleep(900);
-        await page.click(page.manageAvailablePlanCancelBtn);
+        await page.click(page.subscribeBtn);
+        await page.driver.sleep(1000);
+        await fs.writeFile(`${__dirname}/already_subscribed_page.png`,
+            await page.driver.takeScreenshot(), "base64",
+            (e) => {
+                if (e) console.error(e)
+                else console.log('Save Succesful')
+            });
+        await page.driver.sleep(2000);
+        await page.click(page.backToHomePage);
         await page.driver.sleep(300);
-        await page.click(page.cancelSubscriptionBtn);
-        await page.driver.sleep(900);
-        await page.click(page.cancelSubscriptionBackBtn);
-        await page.driver.sleep(900);
-        await page.click(page.cancelSubscriptionCancelBtn);
+        await page.click(page.accountDropMenuLnk);
         await page.driver.sleep(300);
-        await page.click(page.backToAccountBtn);
+        await page.click(page.accountSettingsLnk);
         await page.driver.sleep(300);
         await page.click(page.notificationsBtn);
-        await page.driver.sleep(300);
+        await page.driver.sleep(600);
         await page.driver.findElement(page.notificationWholeForm).isDisplayed();
         await page.click(page.notificationNewVideoCheckBox);
         await page.driver.sleep(300);
@@ -371,7 +374,7 @@ describe("Testing main features of The Criterion Channel website", () => {
         await page.driver.findElement(page.cardPlayWindowWholePage).isDisplayed();
         await page.canHover2();
         await page.click(page.cardPlayFilm);
-        await page.driver.sleep(20000);
+        await page.driver.sleep(25000);
         await page.driver.close();
     });
 });

@@ -1,4 +1,4 @@
-import { By } from "selenium-webdriver";
+import { By, } from "selenium-webdriver";
 import { BasePage } from "./basePage";
 
 export class theCriterionChannel extends BasePage {
@@ -68,7 +68,10 @@ export class theCriterionChannel extends BasePage {
     giftDeliveryDateBtn: By = By.css('.DayPickerInput');
     nameOnTheCardInput: By = By.css('[id="Name on card"]');
     manageSubscriptionBtn: By = By.xpath('(//button[@class="SettingsListItem-module__item-button"])[3]');
-    manageSubscriptionWholeForm: By = By.css('[class="FrequencySwitcher-module__plans-container"]');
+    manageSubscriptionWholeForm: By = By.css('[class="SettingsNav-module__main-content"]');
+    subscribeBtn: By = By.css('[class="sc-fPXMVe dgCnYr"]');
+    alreadySubscribedWholePage: By = By.id('#customer-app');
+    backToHomePage: By = By.css('[class="sc-esYiGF ftMAqQ custom-css-checkout-logo-image"]');
     manageAvailablePlansBtn: By = By.css('[class="AvailablePlansList-module__available-plan-button"]');
     manageAvailablePlanCancelBtn: By = By.css('[class="sc-fPXMVe gSKHKp"]');
     cancelSubscriptionBtn: By = By.css('[class="sc-fPXMVe dmHWTM"]');
