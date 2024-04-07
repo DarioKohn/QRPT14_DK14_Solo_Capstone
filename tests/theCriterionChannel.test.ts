@@ -152,7 +152,7 @@ describe("Testing main features of The Criterion Channel website", () => {
         await page.click(page.needHelpLnk);
         await page.navigate("https://www.criterionchannel.com/help/articles/trouble-logging-in-computer");
         await page.driver.findElement(page.needSignInHelpWholePage).isDisplayed();
-        await page.driver.sleep(4000);
+        await page.driver.sleep(600);
         await fs.writeFile(`${__dirname}/help_sign_in_page.png`,
             await page.driver.takeScreenshot(), "base64",
             (e) => {
